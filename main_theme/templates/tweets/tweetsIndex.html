@@ -1,0 +1,32 @@
+
+{% extends 'base.html' %}
+
+
+{%  block content %}
+{% load static tailwind_tags %}
+<h1 class="text-3xl font-sans">Twitter for Snakes</h1>
+<div class="flex-row items-center">
+<form  action="{% url 'create_tweet' %}" method="POST" class=" bg-white rounded-xl shadow-md overflow-hidden m-5">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <input type="submit" value="new hiss" class="bg-slate-500 border-x-2 border-y-2 border-black pl-6 pr-6 pt-3 pb-3 rounded-md m-5"/>
+</form>
+</div>
+<div>
+  {% for tweet in tweetsList %}
+
+  <div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl m-5">
+    <div class="md:flex">
+      <div class="p-8">
+        <div class="uppercase tracking-wide text-sm text-indigo-500 font-semibold">Username: {{tweet.user}}</div>
+        <p class="mt-2 text-gray-500">{{tweet.content}}</p>
+        <p class="mt-2 text-gray-500">Time: {{tweet.date_time}}</p>
+      </div>
+    </div>
+  </div>
+
+  {% endfor %}
+
+</div>
+{% tailwind_css %}
+{% endblock %}

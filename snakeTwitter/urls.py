@@ -22,5 +22,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('main_app.urls')),
     path('__reload__/', include('django_browser_reload.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),
     # In this case '' represents the root route
 ]

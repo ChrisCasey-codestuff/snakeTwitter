@@ -8,12 +8,27 @@
 		<meta http-equiv="X-UA-Compatible" content="ie=edge">
 		{% tailwind_css %}
 	</head>
-
-	<body class="bg-gray-50 font-serif leading-normal tracking-normal">
-		<div class="container mx-auto">
-			<section class="flex items-center justify-center h-screen">
-				<h1 class="text-5xl">Django + Tailwind = ❤️</h1>
-			</section>
-		</div>
+	<body class="bg-green-400 font-serif leading-normal tracking-normal">
+		<nav class="bg-slate-800 py-1 shadow-lg">
+			<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+				<div class="flex justify-between h-16">
+					<div class="flex-shrink-0 flex items-center">
+						<a href="#" class="text-white font-bold text-xl">My Site</a>
+					</div>
+					<div class="flex">
+						<a href="" class="text-white px-3 pt-3 pb-2 rounded-md text-lg font-medium">Home</a>
+						<a href="/login" class="text-white px-3 pt-3 pb-2 rounded-md text-lg font-medium">Login</a>
+						<a href="/logout" class="text-white px-3 pt-3 pb-2 rounded-md text-lg font-medium">Logout</a>
+					</div>
+				</div>
+			</div>
+		</nav>
+		<div class="items-center">
+		  <div class="mx-auto">
+			  {% block content %}
+				{% endblock %}
+		  </div>
+	  </div>
 	</body>
 </html>
+
