@@ -2,13 +2,20 @@
 {% extends 'base.html' %}
 
 
-{%  block content %}
+{% block content %}
 {% load static tailwind_tags %}
-<div class="flex-col items-center rounded-full mt-10 ml-10">
+<div>
+ <div class="float-right mr-10 bg-green-200 drop-shadow-lg rounded-lg p-6 mb-5">
+  <p class="text-lg font-serif"> Bio: Hello I ama chris This is my bio is it long enough yet I hope so maybe one day formatting wont be o annoying</p>
+ </div>
+
+
+
+<div class="rounded-full mt-10">
 
 <form  action="{% url 'create_tweet' %}" method="POST">
 
-  <input type="submit" value="New Hiss" class="bg bg-green-500 border-x-2 border-y-2 border-black pl-6 pr-6 pt-3 pb-3 rounded-md mb-3 ml-5"/>
+  <input type="submit" value="New Hiss" class="bg-green-500 border-x-2 border-y-2 border-black pl-6 pr-6 pt-3 pb-3 rounded-md mb-3 ml-5"/>
   {% csrf_token %}
 
     <textarea name="content" cols="40" rows="1" maxlength="250" required id="id_content" class="ml-5"></textarea>
@@ -16,11 +23,13 @@
 
 </form>
 </div>
+
 <div>
-  {% for tweet in tweetsList %}
+
+  {% for tweet in userTweetsList %}
 
   <div class="max-w-md bg-white rounded-xl shadow-md overflow-hidden md:max-w-xl m-5">
-    <div class="md:flex justify-items-start">
+    <div class="md:flex">
       <div class="p-8">
         <div class="uppercase tracking-wide text-xs text-black font-semibold"> @{{tweet.user}}</div>
         <p class="mt-1 text-gray-500">{{tweet.content}}</p>
@@ -30,7 +39,9 @@
   </div>
 
   {% endfor %}
-
 </div>
+</div>
+</div>
+
 {% tailwind_css %}
 {% endblock %}

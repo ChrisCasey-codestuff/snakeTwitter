@@ -9,25 +9,38 @@
 		{% tailwind_css %}
 	</head>
 	<body class="bg-green-400 font-serif leading-normal tracking-normal">
-		<nav class="bg-slate-800 py-1 shadow-lg">
+		<nav class="bg-green-400 py-1 shadow-lg">
 			<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 				<div class="flex justify-between h-16">
 					<div class="flex-shrink-0 flex items-center">
-						<a href="#" class="text-white font-bold text-xl">My Site</a>
+						<a href="#" class="text-black font-bold text-3xl">Snake Twitter</a>
+						<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAAD0UlEQVR4nO2ZaYhOYRTHf4NJspuhiJlhknwhRVHIvnyQXbZSZPmgiG+yDh8sUcoyoizfCF/IhBCTkRhbGCZNGUnoHYOxM69Onbdub89zl/e+1x01/zo1yzn3Of/7nOec85wLzWhGELQDFgKngWrgG/AKOA8M4z9AK2AN8A5IWuQnMJQmjHzgqgsBp5yjiSIXqPBJIqlhFim6AduAB0CDyn1gK9DVxW5FABIiX6IkMQv45LK4/G+mxbYiIJHnUZEYBzT6cEB01hrsPwckcjKq+H4R0JFdQE4IIvOjILI8oBMpOa4vQXA7gN1boG0URG4ZFrsAFACFwBkXp8qAUcC9AERWExE+GhYTEim0APZmuGvJNLmiRTMS1BkW7G3QW+czISQtclOLZmS4Y6m8bQy6S4BfHg5/B+5qrZAkUA4sc5ynyLDR4pAQ7G/Qn+JSbz4Bk4kJeUC9xbEfwA7VcaIIKAVqVeclcFD/Hiume8S/JIQSoHNcDo4HDgPPHL1TtdYAaTdaOnRnA1894v8DsAno+K8I9AVu+MgkQnCiw24I8NSHXUKzmFygIsNIS0q1yR9gvcO+NbBZd8/L9j2wKm1ns7YTiQzz/AZDS7/HR7iJVAL9sknkesjKu9LwzB7Afs1ObrZ1Gg2hMcayQBUwDWivMS0J4JJFV4rdaMvzCzTluhFKAMVhiZRaDnMng6604LtdulMJKxukkTyiZ8vWT4XCE8ND57jo52gRMzlzysd6g/WmZ7KXjjhjmDJVTw+bVvoGTc7M8LFmZ61LyTQ5EIaIKVv18mHXVcMp3fYN0MWHvex6uu3jMEQeGx44z6etyRmRoz5shaypA8gY+wwPrA7QH5012DdqlnODJJOsEhlpeas1wFLNNm7objlnrz1CVM5Suo0knlCwHVxnar0I7ASmam1xYrHF7qGhlU/thilzSSkIhT4BW5RvumiRIyVftujKzizQUO2gO2FLv2PIAkZoM5cMIPV680PDyJTF/Mo1sohCDaEgDjTqBUswXO/cQUkkstGimDAI2K73b6+mL5VtUmdhVMCdTWg0RA6ZYgzUA13q8jFGhhE4wuyCz3AqJia0tzgpu5eOYdrKP3FcmaWrPgSMpQmg2HLwY8cA4JiOZ37pm6vRbnauYUhWaJlNxYpFPqaAtXrH7qHxX2bQkYF0bJgE/A6R+52yJS4SuZY7QSZSH/Wg2Q3THI480t/z9GPKBJ2CBy2IseCEg4TpS1COTtFt893USNTPjTBSVKkz8lXWDfk6eKvUcX+D/lzi8en5n6FBicQW29lCuTaIzWgG4fEXFgoPJ8a7vdMAAAAASUVORK5CYII=" class="m-5 object-contain">
 					</div>
 					<div class="flex">
-						<a href="" class="text-white px-3 pt-3 pb-2 rounded-md text-lg font-medium">Home</a>
-						<a href="/login" class="text-white px-3 pt-3 pb-2 rounded-md text-lg font-medium">Login</a>
-						<a href="/logout" class="text-white px-3 pt-3 pb-2 rounded-md text-lg font-medium">Logout</a>
+						<a href="/tweets/feed" class="text-black px-3 pt-3 pb-2 rounded-md text-xl font-semibold">Home</a>
+						{% if user.is_authenticated %}
+						<a href="/tweets/user/feed" class="text-black px-3 pt-3 pb-2 rounded-md text-xl font-semibold">Profile</a>
+						<a href="{% url 'logout' %}" class="text-black px-3 pt-3 pb-2 rounded-md text-xl font-semibold">Logout</a>
+						{% else %}
+						<a href="/signup" class="text-black px-3 pt-3 pb-2 rounded-md text-xl font-semibold">Sign Up</a>
+						<a href="{% url 'login' %}" class=" border-slate-950 text-black px-3 pt-3 pb-2 rounded-md text-xl font-semibold">Login</a>
+						{% endif %}
+
 					</div>
 				</div>
 			</div>
 		</nav>
-		<div class="items-center">
-		  <div class="mx-auto">
+		<div>
+			{% if user.is_authenticated %}
+			{% else %}
+			<h3 class="font-semibold text-3xl m-3">Welcome to Hiss! or Twitter for Snakes! or something....anyway, sign up or log in above to share your slithery Python thoughts with all your snake friends</h3>
+			{% endif %}
+		</div>
+		<div >
+
 			  {% block content %}
 				{% endblock %}
-		  </div>
+
 	  </div>
 	</body>
 </html>

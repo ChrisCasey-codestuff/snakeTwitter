@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 
 class Tweet (models.Model):
 
-    content = models.TextField( max_length=250, verbose_name='Hissss')
+    content = models.TextField( max_length=250, verbose_name='')
     date_time = models.DateTimeField()
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     def __str__(self):
