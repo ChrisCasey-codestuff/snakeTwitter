@@ -32,9 +32,8 @@ def create_tweet (request):
 
 def userFeed(request):
     userTweetsList = Tweet.objects.filter(user = request.user)
-
+    print(userTweetsList)
     form = TweetForm()
     return render(request, 'tweets/userTweets.html',  { 'userTweetsList': userTweetsList, 'form': form})
-
 
 
