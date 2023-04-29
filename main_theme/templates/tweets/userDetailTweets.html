@@ -31,12 +31,7 @@
         <p class="mt-1 text-gray-500">{{tweet.content}}</p>
         <p class="mt-1 text-sm text-gray-500 ">Time: {{tweet.date_time}}</p>
       </div>
-      <div class="rounded-md p-2">
-        <form action="/tweets/{{tweet.id}}/delete/" method="DELETE">
-          {% csrf_token %}
-          <input type="submit" value="Delete Tweet" class="bg-black text-white rounded-md drop-shadow-md p-2 hover:drop-shadow-xl mt-16 ml-6">
-        </form>
-        </div>
+
     </div>
   </div>
 
