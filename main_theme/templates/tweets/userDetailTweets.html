@@ -7,19 +7,6 @@
 <div class="right-3">
   <div class="flex items-center bg-black rounded-lg mt-7 p-4 text-white ml-5 mr-5"><p>Bio: {{ profile }} </p></div>
 
-<div class="rounded-full mt-10">
-
-<form  action="{% url 'create_tweet' %}" method="POST">
-
-  <input type="submit" value="New Hiss" class="bg-green-500 border-x-2 border-y-2 border-black pl-6 pr-6 pt-3 pb-3 rounded-md mb-3 ml-5"/>
-  {% csrf_token %}
-
-    <textarea name="content" cols="40" rows="1" maxlength="250" required id="id_content" class="ml-5"></textarea>
-
-
-</form>
-</div>
-
 <div>
 
   {% for tweet in user_tweets %}
