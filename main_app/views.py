@@ -11,6 +11,7 @@ from datetime import date
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
 from django.contrib.auth.models import User
+import time
 # Create your views here.
 def home(request):
     return render(request, 'base.html')
@@ -28,7 +29,7 @@ def create_tweet (request):
     # has the cat_id assigned
        new_tweet = form.save(commit=False)
        new_tweet.user = request.user
-       new_tweet.date_time = date.today()
+       new_tweet.date_time = time.time()
        #print(new_tweet)
        new_tweet.save()
 
