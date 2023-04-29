@@ -7,7 +7,7 @@ from .models import Tweet
 from .forms import TweetForm
 from .forms import ProfileForm
 from .models import Profile
-from datetime import date
+import datetime
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
 from django.contrib.auth.models import User
@@ -29,7 +29,7 @@ def create_tweet (request):
     # has the cat_id assigned
        new_tweet = form.save(commit=False)
        new_tweet.user = request.user
-       new_tweet.date_time = time.time()
+       new_tweet.date_time = datetime.datetime.now()
        #print(new_tweet)
        new_tweet.save()
 
