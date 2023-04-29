@@ -22,7 +22,7 @@
   <div class="max-w-md bg-white rounded-xl shadow-md overflow-hidden md:max-w-xl m-5">
     <div class="md:flex justify-items-start">
       <div class="p-8">
-        <div class="uppercase tracking-wide text-xs text-black font-semibold"> @{{tweet.user}}</div>
+        <a  href= "/users/{{tweet.user.id}}" class="uppercase tracking-wide text-xs text-black font-semibold"> @{{tweet.user}}</a>
         <p class="mt-1 text-gray-500">{{tweet.content}}</p>
         <p class="mt-1 text-sm text-gray-500 ">Time: {{tweet.date_time}}</p>
       </div>

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{%  block content %}
+{% load static tailwind_tags %}
+<h1 class="m-5 text-3xl">Create your profile! Add a picture and a short bio!</h1>
+<div class="m-5">
+ <form method='POST'>
+  {% csrf_token %}
+  {{ form.as_p }}
+  <input type="submit" value="Create Profile" class="bg-green-400 border-x-2 border-y-2 border-black pl-6 pr-6 pt-3 pb-3 rounded-md m-5">
+ </form>
+
+</div>
+{% tailwind_css %}
+{% endblock %}

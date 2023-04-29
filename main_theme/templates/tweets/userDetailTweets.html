@@ -5,7 +5,7 @@
 {% block content %}
 {% load static tailwind_tags %}
 <div class="right-3">
-  <div class="flex items-center bg-black rounded-lg mt-7 p-4 text-white ml-5 mr-5"><p>Bio:</p></div>
+  <div class="flex items-center bg-black rounded-lg mt-7 p-4 text-white ml-5 mr-5 "><p>Bio: {{ profile }} </p></div>
 
 <div class="rounded-full mt-10">
 
@@ -22,7 +22,7 @@
 
 <div>
 
-  {% for tweet in userTweetsList %}
+  {% for tweet in user_tweets %}
 
   <div class="max-w-md bg-white rounded-xl shadow-md overflow-hidden md:max-w-xl m-5">
     <div class="md:flex">
