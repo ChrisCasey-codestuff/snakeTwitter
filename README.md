@@ -3,7 +3,7 @@
 
 This is Hiss, Hiss is a snake themed twitter like app made using Python and Django.
 
-This app was created using Python, Django, and Tailwind
+This app was created using HTML, Python, Django, and Tailwind
 
 Using this app you can: 
 1. Make a profile
