@@ -95,3 +95,8 @@ def user_detail(request, user_id):
     user_tweets = user.tweet_set.all()
 #create list of toys cat doesnt have
     return render(request, 'tweets/userDetailTweets.html', {'user_tweets': user_tweets, 'user': user, 'profile':profile})
+
+def delete_tweet(request, id):
+    tweet = Tweet.objects.get(id = id)
+    tweet.delete()
+    return redirect('feed')

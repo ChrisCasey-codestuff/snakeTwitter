@@ -8,7 +8,7 @@
 
 <form  action="{% url 'create_tweet' %}" method="POST">
 
-  <input type="submit" value="New Hiss" class="bg bg-green-500 border-x-2 border-y-2 border-black pl-6 pr-6 pt-3 pb-3 rounded-md mb-3 ml-5"/>
+  <input type="submit" value="New Hiss" class="bg bg-green-500 border-x-2 border-y-2 border-black pl-6 pr-6 pt-3 pb-3 rounded-md mb-3 ml-5 drop-shadow-sm hover:drop-shadow-lg"/>
   {% csrf_token %}
 
     <textarea name="content" cols="40" rows="1" maxlength="250" required id="id_content" class="ml-5"></textarea>
@@ -22,9 +22,15 @@
   <div class="max-w-md bg-white rounded-xl shadow-md overflow-hidden md:max-w-xl m-5">
     <div class="md:flex justify-items-start">
       <div class="p-8">
-        <a  href= "/users/{{tweet.user.id}}" class="uppercase tracking-wide text-xs text-black font-semibold"> @{{tweet.user}}</a>
+        <a  href= "/users/{{tweet.user.id}}" class="uppercase tracking-wide text-xs text-black font-semibold"> @{{tweet.user}}<a>
         <p class="mt-1 text-gray-500">{{tweet.content}}</p>
         <p class="mt-1 text-sm text-gray-500 ">Time: {{tweet.date_time}}</p>
+      </div>
+      <div class="rounded-md p-2">
+      <form action="/tweets/{{tweet.id}}/delete/" method="DELETE">
+        {% csrf_token %}
+        <input type="submit" value="Delete Tweet" class="bg-black text-white rounded-md drop-shadow-md p-2 hover:drop-shadow-xl mt-16 ml-6">
+      </form>
       </div>
     </div>
   </div>

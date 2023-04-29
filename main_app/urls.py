@@ -17,6 +17,8 @@ urlpatterns = [
 
   path('tweets/user/feed/', views.userFeed, name='user_feed'),
 
+  path('tweets/<int:id>/delete/', views.delete_tweet, name='delete_tweet'),
+
  # path('signup/', views.signup, name='signup'),
  ## path('tweets/delete_tweet', views.delete_tweet, name='create_tweet'),
 
