@@ -10,7 +10,10 @@ class Tweet (models.Model):
 
     content = models.TextField( max_length=250, verbose_name='')
     date_time = models.DateTimeField()
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    users = models.ManyToManyField(User)
+    likes = models.IntegerField(default=0)
+    retweets = models.IntegerField(default=0)
+    creator = models.TextField(max_length=250)
     def __str__(self):
         return (f'{self.content}')
     class Meta:

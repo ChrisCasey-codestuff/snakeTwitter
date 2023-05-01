@@ -27,15 +27,37 @@
   <div class="max-w-md bg-white rounded-xl shadow-md overflow-hidden md:max-w-xl m-5">
     <div class="md:flex">
       <div class="p-8">
-        <div class="uppercase tracking-wide text-xs text-black font-semibold"> @{{tweet.user}}</div>
+        <div class="uppercase tracking-wide text-xs text-black font-semibold"> @{{tweet.creator}}</div>
         <p class="mt-1 text-gray-500">{{tweet.content}}</p>
         <p class="mt-1 text-sm text-gray-500 ">Time: {{tweet.date_time}}</p>
-        <div class="rounded-md p-2">
-          <form action="/tweets/{{tweet.id}}/delete/" method="DELETE">
+        <div class="flex flex-row">
+          <div class="mt-2">
+          <p>{{tweet.likes}}</p>
+          <form action="/tweets/{{tweet.id}}/like/">
             {% csrf_token %}
-            <input type="submit" value="Delete Tweet" class="bg-black text-white rounded-md drop-shadow-md p-2 hover:drop-shadow-xl mt-16 ml-6">
-          </form>
+            <div class="mt-3">
+            <button type="submit" class="hover:drop-shadow-xl">
+              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAACXBIWXMAAAsTAAALEwEAmpwYAAABHElEQVR4nO3WzUoCYRTG8f8yXEjLwOwSctMF6K691+AtWDdQUBfQxhbeQO4kUxAN3bgRctsqamMrkQg/YmTgBCbndYyZM7PxgbOZ5/D+YMSXgX2C0wc8oAkcEGO8tblKCp4DR0nAHlBOCn6OA00r8Gcc8LUCj63RDPClwB1ruKqg/tyFPbjnONifIfCzpQ+aGdACTjT4O8TBu05Tgz+kPN54HiU80eCRlKeG8KMGd6XMG8JnGlyTsmgINzT4XsqSITzV4FspLwzhtgZfSnljBA9c/+OSLFSM4BaOFGXhwQieuuCC49I3vbX85GThhb8JCy6BJ9fv6ycri+8Rw68u8DepCF/r+rwFwchd6m35rjoE6sDiH+j5LvA+WGUF1XB/MAFjG3cAAAAASUVORK5CYII=">
+            </button>
+            </form>
           </div>
+          </div>
+          <div class='ml-5'>
+            <p>{{tweet.retweets}}</p>
+            <form action="/tweets/{{tweet.id}}/retweet/">
+              {% csrf_token %}
+              <button type="submit" class="hover:drop-shadow-xl">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAAAsTAAALEwEAmpwYAAABSklEQVR4nO3XTyuEURTH8S+Jepq9UiMr1pqVGrJgy0os7S0mWy9jFnbKC1DKShQprL0BVogNyp+Rf6OnrjrJzTTPuZny+9TdzDOdc0/3t7gXRERERMRDH1AFptpcVWCAP3QINAuuD2AHGEqxwV6gEvnWDTw5DNAM6xzo9x5gHWgAY5HvC8A2sNvmOgZezBB1z82vmMJXwCBpzJo+Z15F50I27RGfACX8lUyPB4+CeeYfIzndDNn3lJn6ed/CNoBT4NIUboTf8jVBhw/wZdIU3iedTANE6ARalClCEYpQizJFKEIR+kUt3Ej3TITezE11kQ4/gRHgJnLnugDKRRuMm4JHpDENvH7b/D0w6lG8bIo+hzdsF/6WTJ93YMaz+IHjk/EuPF5+shr+s4yzYeDacYitSJ8eYJ5E8iithWdlkc3fesdDRERE5D/6BGLt9CijJbXIAAAAAElFTkSuQmCC">
+              </button>
+              </form>
+            </div>
+            <div class="rounded-md ml-10 mb-20">
+              <form action="/tweets/{{tweet.id}}/delete/" method="DELETE">
+                {% csrf_token %}
+                <input type="submit" value="Delete Tweet" class="bg-black text-white rounded-md drop-shadow-md p-2 hover:drop-shadow-xl mt-16 ml-6">
+              </form>
+              </div>
+            </div>
       </div>
     </div>
   </div>

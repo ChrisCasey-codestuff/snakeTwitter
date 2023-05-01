@@ -28,20 +28,21 @@ def create_tweet (request):
     # don't save the form to the db until it
     # has the cat_id assigned
        new_tweet = form.save(commit=False)
-       new_tweet.user = request.user
+
        new_tweet.date_time = datetime.datetime.now()
        #print(new_tweet)
+       new_tweet.creator = (request.user)
+       print(new_tweet.creator)
        new_tweet.save()
-
-
        return redirect('feed')
 
 def userFeed(request):
+    user = request.user
     profile = Profile.objects.get(user = request.user)
-    print(profile)
-    userTweetsList = Tweet.objects.filter(user = request.user)
-    print(userTweetsList)
+    userTweetsList = user.tweet_set.all()
     form = TweetForm()
+
+
     return render(request, 'tweets/userTweets.html',  { 'userTweetsList': userTweetsList, 'form': form, 'profile': profile})
 
 def create_profile (request):
@@ -88,15 +89,41 @@ def signup (request):
         #PROVIDE FORM
         #RENDER TEMPLATE
 
-def user_detail(request, user_id):
+def user_detail(request, username):
 
-    user = User.objects.get(id = user_id)
+    user = User.objects.get(username = username)
     profile = Profile.objects.get(user = user)
-    user_tweets = user.tweet_set.all()
+    print(user)
+    print(profile)
+    user_tweet_set = user.tweet_set.all()
+    user_tweets = Tweet.objects.filter(creator = user)
 #create list of toys cat doesnt have
-    return render(request, 'tweets/userDetailTweets.html', {'user_tweets': user_tweets, 'user': user, 'profile':profile})
+    print(user)
+    return render(request, 'tweets/userDetailTweets.html', {'user_tweet_set': user_tweet_set, 'user': user, 'profile':profile, 'user_tweets':user_tweets})
 
 def delete_tweet(request, id):
     tweet = Tweet.objects.get(id = id)
     tweet.delete()
+    return redirect('feed')
+
+def add_like(request, tweet_id):
+
+    tweet = Tweet.objects.get(id= tweet_id)
+    user = request.user
+   # user.tweet_set.add(tweet)
+    time = tweet.date_time
+    tweet.likes += 1
+    tweet.date_time = time
+    tweet.save()
+    return redirect('feed')
+
+def retweet(request, tweet_id):
+    tweet = Tweet.objects.get(id= tweet_id)
+    user = request.user
+   # user.tweet_set.add(tweet)
+    time = tweet.date_time
+    tweet.retweets += 1
+    tweet.date_time = time
+    user.tweet_set.add(tweet)
+    tweet.save()
     return redirect('feed')
