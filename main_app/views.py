@@ -43,10 +43,11 @@ def userFeed(request):
     user_retweet_set = user.tweet_set.all()
     user_tweets = Tweet.objects.filter(creator = user)
     print(user_retweet_set)
+    print(user_tweets)
     form = TweetForm()
 
 
-    return render(request, 'tweets/userTweets.html',  { 'userTweetsList': user_tweets, 'form': form, 'profile': profile, 'user_retweets': user_retweet_set})
+    return render(request, 'tweets/userTweets.html',  { 'userTweetsList': user_tweets, 'form': form, 'profile': profile, 'user_retweet_set': user_retweet_set})
 
 def create_profile (request):
     #POST
@@ -102,7 +103,7 @@ def user_detail(request, username):
     user_tweets = Tweet.objects.filter(creator = user)
 #create list of toys cat doesnt have
     print(user)
-    return render(request, 'tweets/userDetailTweets.html', {'user_tweet_set': user_retweet_set, 'user': user, 'profile':profile, 'user_tweets':user_tweets})
+    return render(request, 'tweets/userDetailTweets.html', {'user_retweet_set': user_retweet_set, 'user': user, 'profile':profile, 'user_tweets':user_tweets})
 
 def delete_tweet(request, id):
     tweet = Tweet.objects.get(id = id)
