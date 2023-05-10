@@ -18,7 +18,7 @@
 </div>
 <div>
   {% for tweet in tweetsList %}
-  <div class="max-w-md bg-white rounded-xl shadow-md overflow-hidden md:max-w-xl m-5">
+  <div class="max-w-md bg-white rounded-md shadow-md overflow-hidden md:max-w-xl m-5">
     <div class="md:flex justify-items-start">
       <div class="p-8">
         <a  href= '/users/{{tweet.creator}}/' class="uppercase tracking-wide text-xs text-black font-semibold hover:drop-shadow-xl"> {{tweet.creator}}<a>
@@ -38,7 +38,7 @@
           </div>
           <div class='ml-5'>
             <p>{{tweet.retweets}}</p>
-            <form action="/tweets/{{tweet.id}}/retweet/">
+            <form action="/tweets/{{tweet.id}}/retweet/" method="POST">
               {% csrf_token %}
               <button type="submit" class="hover:drop-shadow-xl">
                 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAAAsTAAALEwEAmpwYAAABSklEQVR4nO3XTyuEURTH8S+Jepq9UiMr1pqVGrJgy0os7S0mWy9jFnbKC1DKShQprL0BVogNyp+Rf6OnrjrJzTTPuZny+9TdzDOdc0/3t7gXRERERMRDH1AFptpcVWCAP3QINAuuD2AHGEqxwV6gEvnWDTw5DNAM6xzo9x5gHWgAY5HvC8A2sNvmOgZezBB1z82vmMJXwCBpzJo+Z15F50I27RGfACX8lUyPB4+CeeYfIzndDNn3lJn6ed/CNoBT4NIUboTf8jVBhw/wZdIU3iedTANE6ARalClCEYpQizJFKEIR+kUt3Ej3TITezE11kQ4/gRHgJnLnugDKRRuMm4JHpDENvH7b/D0w6lG8bIo+hzdsF/6WTJ93YMaz+IHjk/EuPF5+shr+s4yzYeDacYitSJ8eYJ5E8iithWdlkc3fesdDRERE5D/6BGLt9CijJbXIAAAAAElFTkSuQmCC">

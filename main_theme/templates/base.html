@@ -12,31 +12,31 @@
 		<nav class="bg-green-600 py-1 shadow-lg fixed top-0 left-0 right-0">
 			<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 				<div class="flex justify-between h-16">
-					<div class="flex-shrink-0 flex items-center bg-green-300 p-6 rounded-lg hover:drop-shadow-lg">
-						<a href="#" class="text-black font-bold text-3xl drop-shadow-md">Snake Twitter</a>
+					<div class="flex-shrink-0 flex items-center bg-green-300 p-6 rounded-sm hover:drop-shadow-lg">
+						<a href="#" class="text-black  text-3xl drop-shadow-md font-extralight">Snake Twitter</a>
 						<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAAD0UlEQVR4nO2ZaYhOYRTHf4NJspuhiJlhknwhRVHIvnyQXbZSZPmgiG+yDh8sUcoyoizfCF/IhBCTkRhbGCZNGUnoHYOxM69Onbdub89zl/e+1x01/zo1yzn3Of/7nOec85wLzWhGELQDFgKngWrgG/AKOA8M4z9AK2AN8A5IWuQnMJQmjHzgqgsBp5yjiSIXqPBJIqlhFim6AduAB0CDyn1gK9DVxW5FABIiX6IkMQv45LK4/G+mxbYiIJHnUZEYBzT6cEB01hrsPwckcjKq+H4R0JFdQE4IIvOjILI8oBMpOa4vQXA7gN1boG0URG4ZFrsAFACFwBkXp8qAUcC9AERWExE+GhYTEim0APZmuGvJNLmiRTMS1BkW7G3QW+czISQtclOLZmS4Y6m8bQy6S4BfHg5/B+5qrZAkUA4sc5ynyLDR4pAQ7G/Qn+JSbz4Bk4kJeUC9xbEfwA7VcaIIKAVqVeclcFD/Hiume8S/JIQSoHNcDo4HDgPPHL1TtdYAaTdaOnRnA1894v8DsAno+K8I9AVu+MgkQnCiw24I8NSHXUKzmFygIsNIS0q1yR9gvcO+NbBZd8/L9j2wKm1ns7YTiQzz/AZDS7/HR7iJVAL9sknkesjKu9LwzB7Afs1ObrZ1Gg2hMcayQBUwDWivMS0J4JJFV4rdaMvzCzTluhFKAMVhiZRaDnMng6604LtdulMJKxukkTyiZ8vWT4XCE8ND57jo52gRMzlzysd6g/WmZ7KXjjhjmDJVTw+bVvoGTc7M8LFmZ61LyTQ5EIaIKVv18mHXVcMp3fYN0MWHvex6uu3jMEQeGx44z6etyRmRoz5shaypA8gY+wwPrA7QH5012DdqlnODJJOsEhlpeas1wFLNNm7objlnrz1CVM5Suo0knlCwHVxnar0I7ASmam1xYrHF7qGhlU/thilzSSkIhT4BW5RvumiRIyVftujKzizQUO2gO2FLv2PIAkZoM5cMIPV680PDyJTF/Mo1sohCDaEgDjTqBUswXO/cQUkkstGimDAI2K73b6+mL5VtUmdhVMCdTWg0RA6ZYgzUA13q8jFGhhE4wuyCz3AqJia0tzgpu5eOYdrKP3FcmaWrPgSMpQmg2HLwY8cA4JiOZ37pm6vRbnauYUhWaJlNxYpFPqaAtXrH7qHxX2bQkYF0bJgE/A6R+52yJS4SuZY7QSZSH/Wg2Q3THI480t/z9GPKBJ2CBy2IseCEg4TpS1COTtFt893USNTPjTBSVKkz8lXWDfk6eKvUcX+D/lzi8en5n6FBicQW29lCuTaIzWgG4fEXFgoPJ8a7vdMAAAAASUVORK5CYII=" class="m-5 object-contain">
 					</div>
-					 <div class="flex bg-green-300 rounded-lg drop-shadow-sm p-2">
+					 <div class="flex bg-green-300 rounded-sm drop-shadow-sm p-2">
 
 						{% if user.is_authenticated %}
 						<div class="hover:drop-shadow-xl mt-3">
-						<a href="/tweets/feed" class="text-black px-3 pt-3 pb-2 rounded-md text-xl font-semibold">Feed</a>
+						<a href="/tweets/feed" class="text-black px-3 pt-3 pb-2 rounded-md text-xl font-light">Feed</a>
 					 </div>
 					 <div class="hover:drop-shadow-xl mt-3">
-						<a href="/tweets/user/feed" class="text-black px-3 pt-3 pb-2 rounded-md text-xl font-semibold">Profile</a>
+						<a href="/tweets/user/feed" class="text-black px-3 pt-3 pb-2 rounded-md text-xl font-light">Profile</a>
 					 </div>
 					 <div class="hover:drop-shadow-xl mt-3">
-						<a href="{% url 'logout' %}" class="text-black px-3 pt-3 pb-2 rounded-md text-xl font-semibold">Logout</a>
+						<a href="{% url 'logout' %}" class="text-black px-3 pt-3 pb-2 rounded-md text-xl font-light">Logout</a>
 					 </div>
 						{% else %}
 						<div class="hover:drop-shadow-xl mt-3">
-							<a href="{% url 'home' %}" class="text-black px-3 pt-3 pb-2 rounded-md text-xl font-semibold">Home</a>
+							<a href="{% url 'home' %}" class="text-black px-3 pt-3 pb-2 rounded-md text-xl font-light">Home</a>
 						 </div>
 						<div class="hover:drop-shadow-xl mt-3">
-						 <a href="{% url 'signup' %}" class="text-black px-3 pt-3 pb-2 rounded-md text-xl font-semibold">Sign Up</a>
+						 <a href="{% url 'signup' %}" class="text-black px-3 pt-3 pb-2 rounded-md text-xl font-light">Sign Up</a>
 					  </div>
 					  <div class="hover:drop-shadow-xl mt-3">
-						<a href="{% url 'login' %}" class=" border-slate-950 text-black px-3 pt-3 pb-2 rounded-md text-xl font-semibold">Login</a>
+						<a href="{% url 'login' %}" class=" border-slate-950 text-black px-3 pt-3 pb-2 rounded-md text-xl font-extralight">Login</a>
 					 </div>
 						{% endif %}
 
@@ -46,9 +46,11 @@
 		</nav>
 		<div>
 			{% if user.is_authenticated %}
-			<p class="font-mono text-lg m-3 mt-20">This is Hiss a twitter emulator built using Python and Django! Thanks for stopping by!</p>
+			<p class="font-extralight text-lg m-3 mt-20">This is Hiss a twitter emulator built using Python and Django! Thanks for stopping by!</p>
 			{% else %}
-			<h3 class="font-semibold text-3xl m-3 mt-20">Welcome to Hiss! or Twitter for Snakes! or something....anyway, sign up or log in above to share your slithery Python thoughts with all your snake friends</h3>
+			<div class="">
+			  <h3 class="text-3xl m-3 mt-20 font-extralight">Welcome to Hiss. or Twitter for Snakes. or something....anyway, sign up or log in above to share your slithery Python thoughts with all your snake friends!</h3>
+		  </div>
 			{% endif %}
 		</div>
 		<div >
@@ -60,7 +62,7 @@
 		<span class="bg-black">
 		<footer class="fixed bottom-0 left-0 right-0">
       <div class="right bg-green-600 p-1 drop-shadow-lg">
-        <p class="ml-5 font-semibold bg-green-300 rounded-lg p-2">All Rights Reserved, © 2023 Snake Twitter</p>
+        <p class="ml-5 bg-green-300 rounded-sm p-2">All Rights Reserved, © 2023 Snake Twitter</p>
       </div>
     </footer>
 	</span>

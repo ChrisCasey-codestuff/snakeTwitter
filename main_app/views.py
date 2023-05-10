@@ -28,10 +28,10 @@ def create_tweet (request):
     # don't save the form to the db until it
     # has the cat_id assigned
        new_tweet = form.save(commit=False)
-
+       user = request.user
        new_tweet.date_time = datetime.datetime.now()
        #print(new_tweet)
-       new_tweet.creator = (request.user)
+       new_tweet.creator = (user)
        print(new_tweet.creator)
        new_tweet.save()
        return redirect('feed')
@@ -39,11 +39,14 @@ def create_tweet (request):
 def userFeed(request):
     user = request.user
     profile = Profile.objects.get(user = request.user)
-    userTweetsList = user.tweet_set.all()
+
+    user_retweet_set = user.tweet_set.all()
+    user_tweets = Tweet.objects.filter(creator = user)
+    print(user_retweet_set)
     form = TweetForm()
 
 
-    return render(request, 'tweets/userTweets.html',  { 'userTweetsList': userTweetsList, 'form': form, 'profile': profile})
+    return render(request, 'tweets/userTweets.html',  { 'userTweetsList': user_tweets, 'form': form, 'profile': profile, 'user_retweets': user_retweet_set})
 
 def create_profile (request):
     #POST
@@ -95,11 +98,11 @@ def user_detail(request, username):
     profile = Profile.objects.get(user = user)
     print(user)
     print(profile)
-    user_tweet_set = user.tweet_set.all()
+    user_retweet_set = user.tweet_set.all()
     user_tweets = Tweet.objects.filter(creator = user)
 #create list of toys cat doesnt have
     print(user)
-    return render(request, 'tweets/userDetailTweets.html', {'user_tweet_set': user_tweet_set, 'user': user, 'profile':profile, 'user_tweets':user_tweets})
+    return render(request, 'tweets/userDetailTweets.html', {'user_tweet_set': user_retweet_set, 'user': user, 'profile':profile, 'user_tweets':user_tweets})
 
 def delete_tweet(request, id):
     tweet = Tweet.objects.get(id = id)
