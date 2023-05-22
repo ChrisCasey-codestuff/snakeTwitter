@@ -8,10 +8,10 @@
 
 <form  action="{% url 'create_tweet' %}" method="POST">
 
-  <input type="submit" value="New Hiss" class="bg bg-green-500 border-x-2 border-y-2 border-black pl-6 pr-6 pt-3 pb-3 rounded-md mb-3 ml-5 drop-shadow-sm hover:drop-shadow-lg"/>
+  <input type="submit" value="New Hiss" class="bg bg-green-500 border-x-2 border-y-2 border-black pl-6 pr-6 pt-3 pb-3 rounded-md mb-3 lg:ml-5 md:ml-5 sm:ml-2 drop-shadow-sm hover:drop-shadow-lg"/>
   {% csrf_token %}
 
-    <textarea name="content" cols="40" rows="1" maxlength="250" required id="id_content" class="ml-5"></textarea>
+    <textarea name="content" cols="40" rows="1" maxlength="250" required id="id_content" class="lg:ml-5 md:ml-5 sm:ml-0"></textarea>
 
 
 </form>
@@ -19,7 +19,7 @@
 <div>
   {% for tweet in tweetsList %}
   <div class="max-w-md bg-white rounded-md shadow-md overflow-hidden md:max-w-xl m-5">
-    <div class="md:flex justify-items-start">
+    <div class="md:flex justify-items-center">
       <div class="p-8">
         <a  href= '/users/{{tweet.creator}}/' class="uppercase tracking-wide text-xs text-black font-semibold hover:drop-shadow-xl"> {{tweet.creator}}<a>
         <p class="mt-1 text-gray-500">{{tweet.content}}</p>
