@@ -4,22 +4,20 @@
 
 {%  block content %}
 {% load static tailwind_tags %}
-<div class="flex-col items-center rounded-full mt-10 ml-10">
-
-<form  action="{% url 'create_tweet' %}" method="POST">
-
-  <input type="submit" value="New Hiss" class="bg bg-green-500 border-x-2 border-y-2 border-black pl-6 pr-6 pt-3 pb-3 rounded-md mb-3 lg:ml-5 md:ml-5 sm:ml-2 drop-shadow-sm hover:drop-shadow-lg"/>
-  {% csrf_token %}
-
-    <textarea name="content" cols="40" rows="1" maxlength="250" required id="id_content" class="lg:ml-5 md:ml-5 sm:ml-0"></textarea>
-
-
-</form>
+<div class="">
+  <form  action="{% url 'create_tweet' %}" method="POST">
+    <input type="submit" value="New Hiss" class="bg bg-green-500 border-x-2 border-y-2 border-black pl-6 pr-6 pt-3 pb-3 rounded-md mb-3 lg:ml-5 md:ml-5 sm:ml-2 drop-shadow-sm hover:drop-shadow-lg mb-4"/>
+    {% csrf_token %}
+    <textarea name="content" cols="40" rows="1" maxlength="250" required id="id_content" class="lg:ml-5 md:ml-5 sm:ml-0 mt-4"></textarea>
+  </form>
 </div>
+<div class="flex flex-col items-center w-full">
+
 <div>
+<div class="flex flex-col">
   {% for tweet in tweetsList %}
   <div class="max-w-md bg-white rounded-md shadow-md overflow-hidden md:max-w-xl m-5">
-    <div class="md:flex justify-items-center">
+    <div class="flex justify-center">
       <div class="p-8">
         <a  href= '/users/{{tweet.creator}}/' class="uppercase tracking-wide text-xs text-black font-semibold hover:drop-shadow-xl"> {{tweet.creator}}<a>
         <p class="mt-1 text-gray-500">{{tweet.content}}</p>
@@ -48,12 +46,13 @@
             </div>
         </div>
       </div>
-
     </div>
-  </div>
+
 
   {% endfor %}
 
+</div>
+</div>
 </div>
 {% tailwind_css %}
 {% endblock %}
